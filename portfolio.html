@@ -2,10 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <title>Portfolio Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio ni PRIMO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== BACKGROUND ===== */
         .bgvid {
             position: fixed;
             top: 0;
@@ -13,23 +25,412 @@
             width: 100vw;
             height: 100vh;
             object-fit: cover;
-            z-index: 0;
+            z-index: -1;
             pointer-events: none;
+        }
+
+        /* ===== HEADER / NAVIGATION ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #00bfff;
+        }
+
+        .navbar a {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: #00bfff;
+        }
+
+        /* ===== HOME SECTION ===== */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            padding: 120px 8% 60px;
+            color: white;
+        }
+
+        .home-img img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;          /* bilog na picture */
+            object-fit: cover;
+            border: 5px solid #00bfff;
+            box-shadow: 0 0 25px #00bfff;
+        }
+
+        .home-content h3 {
+            font-size: 28px;
+        }
+
+        .home-content h1 {
+            font-size: 56px;
+            margin: 10px 0;
+        }
+
+        .home-content h1 span {
+            color: #00bfff;
+        }
+
+        .home-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 550px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #00bfff;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            min-height: 100vh;
+            padding: 120px 8% 60px;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+        }
+
+        .contact h2 span {
+            color: #00bfff;
+        }
+
+               /* Ang malaking box na lalagyan */
+       .contact-container {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #00bfff;
+            border-radius: 15px;
+            padding: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;               /* ito ang spacing sa pagitan ng mga box */
+        }
+
+               /* Ang maliliit na box sa loob */
+        .contact-box {
+            background: rgba(0, 0, 0, 0.6);
+            border-left: 2px solid #00bfff;
+            border-radius: 50px;
+            padding: 25px;
+            text-align: left;
+        }
+
+        .info-row {
+            margin-bottom: 12px;
+        }
+
+        .info-label {
+            color: #00bfff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .info-value {
+            font-size: 18px;
+        }
+
+        .info-value a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .info-value a:hover {
+            color: #00bfff;
+        }
+        
+
+        /* ===== EDUCATION SECTION ===== */
+        .education {
+            min-height: 100vh;
+            padding: 120px 8% 60px;
+            color: white;
+            text-align: center;
+        }
+
+        .education h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+        }
+
+        .education h2 span {
+            color: #00bfff;
+        }
+
+        .edu-box {
+            background: rgba(0, 0, 0, 0.6);
+            border-left: 5px solid #00bfff;
+            border-radius: 10px;
+            padding: 25px;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            text-align: left;
+        }
+
+        .edu-box .year {
+            color: #00bfff;
+            font-weight: bold;
+        }
+
+        .edu-box h3 {
+            font-size: 24px;
+            margin: 8px 0;
+        }
+
+        /* ===== PARA SA CELLPHONE ===== */
+
+        .about {
+            min-height: 100vh;
+            padding: 120px 8% 60px;
+            color: white;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+        }
+
+        .about h2 span {
+            color: #00bfff;
+        }
+
+        .about-box {
+            background: rgba(0, 0, 0, 0.6);
+            border-left: 5px solid #00bfff;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-box p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #00bfff;
+            border-radius: 50%;
+            color: #00bfff;
+            font-size: 24px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #00bfff;
+            color: black;
+            box-shadow: 0 0 20px #00bfff;
+            transform: translateY(-5px);
+        }
+        @media (max-width: 768px) {
+            .home {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-img img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .home-content h1 {
+                font-size: 40px;
+            }
+
+            .navbar a {
+                margin-left: 15px;
+                font-size: 16px;
+            }
         }
     </style>
 
 </head>
 <body>
 
-    <header class="header">
-
-        <a href="#home" class="logo">
-            Angelo <span>Ghistz</span>    
-        </a>
-    
     <img src="image/bckgrnd.jpg" alt="background" class="bgvid">
 
+    <!-- NAVIGATION -->
+    <header class="header">
+        <a href="#home" class="logo">Angelo <span>Ghistz</span></a>
 
-    </img>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#contact">Contact</a>
+            <a href="#education">Eduacation</a>
+
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <section class="home" id="home">
+
+        <div class="home-content">
+            <h2>Hello, I'm</h2>
+            <h1><span>Angelo</span></h1>
+            <p>
+            I am an IT student who enjoys learning about technology
+            and creating websites. This portfolio shows my skills, 
+            projects, and the things I have learned.
+            </p>
+            <a href="#about" class="btn">About Me</a>
+
+        </div>
+    </section>
+    
+    <!-- ABOUT ME -->
+    <section class="about" id="about">
+    <h2>ABOUT <span>ME</span></h2>
+
+    <div class="about-box">
+        <p>
+            Hi! I'm Angelo Acosta, a 2nd year BSIT student at Cavite State University.
+            I enjoy learning about technology and building websites.
+            Follow me on my social media accounts!
+        </p>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100089966413842&mibextid=ZbWKwL/Akxzhx." target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/whoisjayloe/whoisjayloe" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@akxzhx/@Ghstz." target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://github.com/angeloacosta094-creator" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </div>
+</section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+    <h2>MY <span>CONTACT</span></h2>
+
+    <!-- BOX 1 -->
+    <div class="edu-box">
+
+        <div class="info-row">
+            <p class="info-label">NAME</p>
+            <p class="info-value">Angelo Acosta</p>
+        </div>
+
+        <div class="info-row">
+            <p class="info-label">AGE</p>
+            <p class="info-value">19</p>
+        </div>
+
+        <div class="info-row">
+            <p class="info-label">SEX</p>
+            <p class="info-value">Male</p>
+        </div>      
+
+        <div class="info-row">
+            <p class="info-label">EMAIL</p>
+            <p class="info-value">
+                <a href="mailto:angeloacosta094@gmail.com">angeloacosta094@gmail.com</a>
+            </p>
+        </div>
+
+        <div class="info-row">
+            <p class="info-label">CONTACT NUMBER</p>
+            <p class="info-value">09608064787</p>
+        </div>
+
+        <div class="info-row">
+            <p class="info-label">GITHUB</p>
+            <p class="info-value">
+                <a href="https://github.com/angeloacosta094-creator" target="_blank">
+                    github.com/angeloacosta094-creator
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+    <!-- EDUCATION -->
+<section class="education" id="education">
+
+    <h2>MY <span>EDUCATION</span></h2>
+
+    <div class="edu-box">
+        <p class="year">2025 - Present</p>
+        <h3>2nd Year College Bachelor of Science in Information Technology</h3>
+        <p>Cavite State University Silang Cavite</p>
+    </div>
+
+    <div class="edu-box">
+        <p class="year">2023 - 2025</p>
+        <h3>Senior High School</h3>
+        <p>Philippine Christian University Dasmarinas Cavite</p>
+    </div>
+
+    <div class="edu-box">
+        <p class="year">2019 - 2023</p>
+        <h3>High School</h3>
+        <p>West National High School</p>
+    </div>
+
+    <div class="edu-box">
+        <p class="year">2014 - 2019</p>
+        <h3>Elementary</h3>
+        <p>Sta Cruz Elementary School</p>
+    </div>
+
+</section>
+
+  
 </body>
-</html>
+</html> 
